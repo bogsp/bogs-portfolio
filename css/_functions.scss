@@ -1,17 +1,17 @@
-@function breakpoint($size: md) {
+@function breakpoint($size: 'md') {
     @return map-get($breakpoints, $size) - 1;
 }
 
-@function breakpoint-max($size: md) {
+@function breakpoint-max($size: 'md') {
     @return map-get($breakpoints, $size);
 }
 
 // typography
-@function size($size: md) {
+@function size($size: 'md') {
     @return map-get($sizes, $size);
 }
 
-@function font($size: md) {
+@function font($size: 'md') {
     @return clamp(size($size), map-get($fontSizes, $size), size($size)*1.2);
 }
 
@@ -26,6 +26,6 @@
 }
 
 // Gutter
-@function gutter($size: md) {
+@function gutter($size: 'md') {
     @return map-get($gutter, $size);
 }

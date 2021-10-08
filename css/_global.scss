@@ -19,9 +19,9 @@ body {
 section {
     @include grid-container();
     div {
-        margin: $gap 0;
+        margin: size() 0;
         &.grid-left {
-            @include grid-2-lr(2);
+            @include grid-2-lr();
             .grid-text {
                 grid-area: text;
             }
@@ -30,7 +30,7 @@ section {
             }
         }
         &.grid-right {
-            @include grid-2-lr(2, false);
+            @include grid-2-lr(false);
             .grid-text {
                 grid-area: text;
             }
@@ -44,13 +44,13 @@ section {
 
 header, footer {
     @include grid-container();
-    padding: $padding-sm*2 0;
+    padding: size()*2 0;
 }
 
 // typography
 h1 {
     @include primary;
-    margin: $gap 0;
+    margin: size('lg') 0;
 }
 
 h1, h2, h3 {
@@ -59,7 +59,7 @@ h1, h2, h3 {
 
 p {
     font-weight: 400;
-    margin: $padding-sm*2 0;
+    margin: size() 0;
 }
 
 a {
@@ -72,9 +72,10 @@ a {
 
 blockquote {
     font-family: 'Oswald', sans-serif;
-    font-size: font();
+    font-size: font(xl);
     font-weight: 500;
-    line-height: font();
+    line-height: size(lg) * 1.4;
+    margin: size('lg') 0;
     &::before,
     &::after {
         content: "\0022";
@@ -107,11 +108,11 @@ ol, ul {
     }
     .card-title,
     .card-content {
-        margin: $padding-sm*2;
-        padding: $padding-sm*2;
+        margin: size()*2;
+        padding: size()*2;
     }
-    // margin: $padding-sm*2;
-    padding: $padding-sm*2;
+    // margin: size()*2;
+    padding: size()*2;
     background-color: $light;
     border-radius: $radius;
     filter: drop-shadow(.2rem .4rem .2rem $secondary);
@@ -126,7 +127,7 @@ header {
                 @include flex-right();
                 flex-direction: row;
                 li {
-                    padding-left: $padding-sm*3;
+                    padding-left: size();
                     
                     &.active {
                         a {
@@ -134,7 +135,7 @@ header {
                         }
                     }
                     &:last-child {
-                        padding-left: $padding-sm*5;
+                        padding-left: size('lg');
                     }
                     a {
                         img {
@@ -156,7 +157,7 @@ footer {
             ul {
                 @include flex-center();
                 li {
-                    margin-left: $padding-sm*3;
+                    margin-left: size('lg');
                 }
             }
         }

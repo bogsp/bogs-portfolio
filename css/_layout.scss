@@ -3,22 +3,22 @@
     display: grid;
 }
 
-@mixin grid-container($g: 2) {
+@mixin grid-container($g: 'md') {
     @include grid();
     @include gap($g);
-    grid-template-columns: $gutter 1fr $gutter;
+    grid-template-columns: gutter() 1fr gutter();
     .container {
         grid-column: 2;
     }
 }
 
-@mixin grid-content($col, $g: 0) {
+@mixin grid-content($col: 1, $g: 'md') {
     @include grid();
     @include gap($g);
     grid-template-columns: repeat($col, 1fr);
 }
 
-@mixin grid-2-lr($g: 0, $left: true) {
+@mixin grid-2-lr($left: true, $g: 'md') {
     @include grid-content(2, $g);
     @if $left {
         grid-template-areas: "text img";    
@@ -27,7 +27,7 @@
     }
 }
 
-@mixin grid-2-col($left: 1, $right: 1, $g: 0) {
+@mixin grid-2-col($left: 1, $right: 1, $g: 'md') {
     @include grid();
     @include gap($g);
     grid-template-columns: $left*1fr $right*1fr;
@@ -37,8 +37,8 @@
     align-content: center;
 }
 
-@mixin gap($amt: 1) {
-    gap: $gap*$amt;
+@mixin gap($amt: 'md') {
+    gap: size($amt);
 }
 
 // flex

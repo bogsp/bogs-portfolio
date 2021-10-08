@@ -1,19 +1,19 @@
 .feature {
     .container {
-        @include grid-content(1,2);
+        @include grid-content();
         .content {
-            @include grid-content(2,2);
+            @include grid-content(2);
             .feature-spills {
                 grid-column: 2;
                 h1, blockquote {
-                    margin: $gap 0;
+                    margin: size() 0;
                 }
                 blockquote {
-                    padding-bottom: $gap;
+                    padding-bottom: size();
                 }
                 .cta {
                     a {
-                        margin-right: $padding-sm*4;
+                        margin-right: size();
                     }
                 }
             }
@@ -22,16 +22,16 @@
 }
 .work {
     .container {
-        @include grid-content(1,2);
+        @include grid-content();
     }
 }
 .about {
     .container {
-        @include grid-content(1);
+        @include grid-content();
         .history {
             min-height: 35vh;
             text-align: center;
-            padding: $gap $gap*4;
+            padding: size() size('lg');
         }
         .process {
             div {
@@ -39,13 +39,13 @@
                 // &:last-child {
                 //     min-height: 10vh;
                 // }
-                @include gap(0);
+                @include gap('na');
                 margin: 0;
                 &.grid-left .grid-text {
-                    padding-right: $gap*4;
+                    padding-right: size('xxl')*2;
                 }
                 &.grid-right .grid-text {
-                    padding-left: $gap*4;
+                    padding-left: size('xxl')*2;
                 }
             }
         }
@@ -53,10 +53,10 @@
 }
 .contact {
     .container {
-        @include grid-content(2,2);
+        @include grid-content(2);
         .contact-info {
             .contact-details {
-                @include grid-2-col(1,6,.25);
+                @include grid-2-col(1,6,'sm');
             }
         }
     }

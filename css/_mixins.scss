@@ -45,8 +45,8 @@
 @mixin button($color, $outline: false) {
     text-align: center;
     text-decoration: none;
-    margin: $gap/100;
-    padding: $padding-sm $padding-sm*4;
+    margin: size();
+    padding: size('sm')*.5 size();
     border: 1px solid $color;
     border-radius: $radius;
 
