@@ -1,6 +1,21 @@
-// colors
-@mixin color($color) {
-    color: $color;
+// Theme Colors
+@mixin color($color: 'primary', $bg: false) {
+    @if ($bg) {
+        background-color: get-color($color);
+    }
+    @else {
+        color: get-color($color);
+    }
+}
+
+// Backgrounds
+@mixin bg-dark {
+    @include color('dark', true);
+    @include color('light');
+}
+
+@mixin bg-transparent {
+    background-color: transparent;
 }
 @mixin primary {
     @include color($primary);

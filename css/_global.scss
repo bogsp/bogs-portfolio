@@ -5,9 +5,15 @@
     margin: 0;
 }
 
+html {
+    font-size: $rem;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     color: $dark;
+    font-size: $font-size;
 }
 
 section {
@@ -66,9 +72,9 @@ a {
 
 blockquote {
     font-family: 'Oswald', sans-serif;
-    font-size: $quote;
+    font-size: $font-size*1.8;
     font-weight: 500;
-    line-height: $quote*1.1;
+    line-height: $font-size*1.1;
     &::before,
     &::after {
         content: "\0022";
