@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@100;400;500&display=swap');
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: $dark;
+}
+
+section {
+    @include grid-container();
+    div {
+        margin: $gap 0;
+        &.grid-left {
+            @include grid-2-lr(2);
+            .grid-text {
+                grid-area: text;
+            }
+            .grid-img {
+                grid-area: img;
+            }
+        }
+        &.grid-right {
+            @include grid-2-lr(2, false);
+            .grid-text {
+                grid-area: text;
+            }
+            .grid-img {
+                grid-area: img;
+            }
+        }
+    }
+}
+
+
+header, footer {
+    @include grid-container();
+    padding: $padding-sm*2 0;
+}
+
+// typography
+h1 {
+    @include primary;
+    margin: $gap 0;
+}
+
+h1, h2, h3 {
+    font-weight: 200;
+}
+
+p {
+    font-weight: 400;
+    margin: $padding-sm*2 0;
+}
+
+a {
+    @include link($highlight);
+    font-weight: 200;
+    &:hover {
+        @include opacity();
+    }
+}
+
+blockquote {
+    font-family: 'Oswald', sans-serif;
+    font-size: $quote;
+    font-weight: 500;
+    line-height: $quote*1.1;
+    &::before,
+    &::after {
+        content: "\0022";
+    }
+}
+
+// buttons
+.btn {
+    @include button($primary);
+}
+.btn-outline {
+    @include button($primary, true);
+}
+.btn {
+    @include button($primary);
+}
+.btn-outline {
+    @include button($primary, true);
+}
+
+// lists
+ol, ul {
+    list-style-type: none;
+}
+
+// card
+.card {
+    .card-title {
+        color: $primary;
+    }
+    .card-title,
+    .card-content {
+        margin: $padding-sm*2;
+        padding: $padding-sm*2;
+    }
+    // margin: $padding-sm*2;
+    padding: $padding-sm*2;
+    background-color: $light;
+    border-radius: $radius;
+    filter: drop-shadow(.2rem .4rem .2rem $secondary);
+}
+
+// header & navigation
+header {
+    .container {
+        @include flex-right();
+        nav {
+            ul {
+                @include flex-right();
+                flex-direction: row;
+                li {
+                    padding-left: $padding-sm*3;
+                    
+                    &.active {
+                        a {
+                            font-weight: 400;
+                        }
+                    }
+                    &:last-child {
+                        padding-left: $padding-sm*5;
+                    }
+                    a {
+                        img {
+                            width: 34px;
+                            opacity: .75;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// footer
+footer {
+    .container {
+        @include flex-center();
+        .social-media {
+            ul {
+                @include flex-center();
+                li {
+                    margin-left: $padding-sm*3;
+                }
+            }
+        }
+    }
+}

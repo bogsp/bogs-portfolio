@@ -1,0 +1,61 @@
+// grid
+@mixin grid {
+    display: grid;
+}
+
+@mixin grid-container($g: 2) {
+    @include grid();
+    @include gap($g);
+    grid-template-columns: $gutter 1fr $gutter;
+    .container {
+        grid-column: 2;
+    }
+}
+
+@mixin grid-content($col, $g: 0) {
+    @include grid();
+    @include gap($g);
+    grid-template-columns: repeat($col, 1fr);
+}
+
+@mixin grid-2-lr($g: 0, $left: true) {
+    @include grid-content(2, $g);
+    @if $left {
+        grid-template-areas: "text img";    
+    } @else {
+        grid-template-areas: "img text";
+    }
+}
+
+@mixin grid-2-col($left: 1, $right: 1, $g: 0) {
+    @include grid();
+    @include gap($g);
+    grid-template-columns: $left*1fr $right*1fr;
+}
+@mixin grid-center {
+    justify-content: center;
+    align-content: center;
+}
+
+@mixin gap($amt: 1) {
+    gap: $gap*$amt;
+}
+
+// flex
+@mixin flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin flex-center {
+    @include flex();
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-right {
+    @include flex();
+    justify-content: flex-end;
+    align-items: center;
+}
+

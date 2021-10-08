@@ -1,0 +1,56 @@
+// colors
+@mixin color($color) {
+    color: $color;
+}
+@mixin primary {
+    @include color($primary);
+}
+@mixin secondary {
+    @include color($secondary);
+}
+@mixin highlight {
+    @include color($highlight);
+}
+@mixin light {
+    @include color($light);
+}
+@mixin dark {
+    @include color($dark);
+}
+
+// links
+@mixin link($color) {
+    text-decoration: none;
+    color: $color;
+    &:hover {
+        @include opacity();
+    }
+}
+// buttons
+@mixin button($color, $outline: false) {
+    text-align: center;
+    text-decoration: none;
+    margin: $gap/100;
+    padding: $padding-sm $padding-sm*4;
+    border: 1px solid $color;
+    border-radius: $radius;
+
+    @if $outline {
+        @include color($color);
+        border-color: $color;
+        &:hover {
+            @include color($light);
+            border-color: transparent;
+            background-color: $color;
+        }
+    } 
+    @else {
+        color: $light;
+        background-color: $color;
+    }
+}
+
+// utilities
+@mixin opacity {
+    opacity: .75;
+}

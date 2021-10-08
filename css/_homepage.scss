@@ -1,0 +1,70 @@
+.feature {
+    .container {
+        @include grid-content(1,2);
+        .content {
+            @include grid-content(2,2);
+            .feature-spills {
+                grid-column: 2;
+                h1, blockquote {
+                    margin: $gap 0;
+                }
+                blockquote {
+                    padding-bottom: $gap;
+                }
+                .cta {
+                    a {
+                        margin-right: $padding-sm*4;
+                    }
+                }
+            }
+        }
+    }
+}
+.work {
+    .container {
+        @include grid-content(1,2);
+    }
+}
+.about {
+    .container {
+        @include grid-content(1);
+        .history {
+            min-height: 35vh;
+            text-align: center;
+            padding: $gap $gap*4;
+        }
+        .process {
+            div {
+                min-height: 35vh;
+                // &:last-child {
+                //     min-height: 10vh;
+                // }
+                @include gap(0);
+                margin: 0;
+                &.grid-left .grid-text {
+                    padding-right: $gap*4;
+                }
+                &.grid-right .grid-text {
+                    padding-left: $gap*4;
+                }
+            }
+        }
+    }
+}
+.contact {
+    .container {
+        @include grid-content(2,2);
+        .contact-info {
+            .contact-details {
+                @include grid-2-col(1,6,.25);
+            }
+        }
+    }
+}
+.feature,
+.work ,
+.about,
+.testimonials,
+.contact {
+    min-height: 50vh;
+}
