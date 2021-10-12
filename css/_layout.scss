@@ -3,34 +3,53 @@
     display: grid;
 }
 
-@mixin grid-container($g: 'md') {
+@mixin grid-container($g: 'na') {
     @include grid();
     @include gap($g);
     grid-template-columns: gutter() 1fr gutter();
     .container {
         grid-column: 2;
     }
+    @include min-screen(sm) {
+        grid-template-columns: 1fr;
+        @include gap('na');
+        .container {
+            grid-column: 1;
+        }
+    }
 }
 
-@mixin grid-content($col: 1, $g: 'md') {
+@mixin grid-content($col: 1, $g: 'na') {
     @include grid();
     @include gap($g);
     grid-template-columns: repeat($col, 1fr);
+    @include min-screen(sm) {
+        grid-template-columns: 1fr;
+        @include gap('na');
+    }
 }
 
-@mixin grid-2-lr($left: true, $g: 'md') {
+@mixin grid-2-lr($left: true, $g: 'na') {
     @include grid-content(2, $g);
     @if $left {
         grid-template-areas: "text img";    
     } @else {
         grid-template-areas: "img text";
     }
+    @include min-screen(sm) {
+        grid-template-columns: 1fr;
+        @include gap('na');
+    }
 }
 
-@mixin grid-2-col($left: 1, $right: 1, $g: 'md') {
+@mixin grid-2-col($left: 1, $right: 1, $g: 'na') {
     @include grid();
     @include gap($g);
     grid-template-columns: $left*1fr $right*1fr;
+    @include min-screen(sm) {
+        grid-template-columns: 1fr;
+        @include gap('na');
+    }
 }
 @mixin grid-center {
     justify-content: center;
@@ -41,21 +60,33 @@
     gap: size($amt);
 }
 
-// flex
-@mixin flex {
+// Flexbox
+@mixin flex($dir: false) {
     display: flex;
     flex-wrap: wrap;
+    @if $dir {
+        flex-direction: column;
+    } @else {
+        flex-direction: row;
+    }
+}
+
+@mixin flex-j($j: 'sa') {
+    justify-content: get-flex-j($j);
+}
+
+@mixin flex-ai($a) {
+    align-items: get-alignment($a);
 }
 
 @mixin flex-center {
     @include flex();
-    justify-content: space-between;
-    align-items: center;
+    @include flex-j('sb');
+    @include flex-ai('c');
 }
 
 @mixin flex-right {
     @include flex();
-    justify-content: flex-end;
-    align-items: center;
+    @include flex-j('fe');
+    @include flex-ai('c');
 }
-

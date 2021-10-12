@@ -25,6 +25,16 @@
     @return if($xxl, map-get($grid-col-xxl, $size), map-get($grid-col, $size));
 }
 
+// Flex justify
+@function get-flex-j($j: 'sa') {
+    @return map-get($map: $flex-j, $key: $j);
+}
+
+// Alignment
+@function get-alignment($a: 'center') {
+    @return map-get($map: $align, $key: $a);
+}
+
 // Gutter
 @function gutter($size: 'md') {
     @return map-get($gutter, $size);

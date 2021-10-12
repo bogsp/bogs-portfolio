@@ -1,3 +1,16 @@
+// Breakpoints
+@mixin min-screen ($size: md) {
+    @media (min-width: breakpoint($size)) {
+        @content;
+    }
+}
+
+@mixin max-screen ($size: md) {
+    @media (max-width: breakpoint-max($size)) {
+        @content;
+    }
+}
+
 // Theme Colors
 @mixin color($color: 'primary', $bg: false) {
     @if ($bg) {
@@ -43,6 +56,7 @@
 }
 // buttons
 @mixin button($color, $outline: false) {
+    display: inline-block;
     text-align: center;
     text-decoration: none;
     margin: size();

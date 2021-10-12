@@ -17,4 +17,5 @@ $dark: #222;
 // layout
 $gap: map-get($sizes, md);
 $radius: 0;
-
+$flex-j: ('sa': space-around, 'sb': space-between, 'c': center, 'fe': flex-end);
+$align: ('s': start, 'c': center, 'e': end);
